@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ypyg.shopmanager"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="13"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 允许程序访问Wi-Fi网络状态信息(Allows applications to access information about Wi-Fi networks) -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 允许应用访问网络上的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许拨打电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 允许读取电话的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许应用打开网络套接口 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 允许应用访问范围(如WIFI)性的定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 允许应用访问精确(如GPS)性的定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- BD定位 -->
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- /BD定位 -->
+    <!-- 短信 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <application
+        android:name=".application.ShopApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:theme="@style/ThemeActivity" >
+        <activity
+            android:name="com.ypyg.shopmanager.activity.login.ActivityLogin"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ThemeActivity2"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ypyg.shopmanager.activity.MainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.ypyg.shopmanager.activity.good.ActivityGoodManager"
+            android:label="@string/title_activity_activity_good_manager" />
+        <activity android:name="com.ypyg.shopmanager.activity.order.ActivityOrderList" />
+        <activity
+            android:name="com.ypyg.shopmanager.activity.order.ActivityOrderList2"
+            android:launchMode="singleTask" />
+        <activity android:name="com.ypyg.shopmanager.activity.data.ActivityDataManager" />
+        <activity android:name="com.ypyg.shopmanager.activity.order.ActivityOrderManager" />
+        <activity
+            android:name="com.ypyg.shopmanager.activity.shop.ActivityShopManager"
+            android:parentActivityName="com.ypyg.shopmanager.activity.MainActivity"
+            android:theme="@style/TransparentTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ypyg.shopmanager.activity.MainActivity" />
+        </activity>
+        <activity android:name="com.ypyg.shopmanager.activity.customer.ActivityConsumptionRecord" />
+        <activity android:name="com.ypyg.shopmanager.activity.promotion.ActivityPromotionManager" />
+        <activity android:name="com.ypyg.shopmanager.activity.good.ActivityGoodDetail" />
+        <activity android:name="com.ypyg.shopmanager.activity.good.ActivityGoodEdit" />
+        <activity android:name="com.ypyg.shopmanager.activity.shop.ActivityEditShopName" />
+        <activity android:name="com.ypyg.shopmanager.activity.customer.ActivityCustomerList" />
+        <activity android:name="com.ypyg.shopmanager.activity.customer.ActivityConsumeData" />
+        <activity
+            android:name="com.ypyg.shopmanager.view.uploadphoto.CropImageActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+    </application>
+
+</manifest>
