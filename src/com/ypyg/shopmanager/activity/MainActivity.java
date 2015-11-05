@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.ypyg.shopmanager.R;
 import com.ypyg.shopmanager.activity.good.ActivityGoodEdit;
 import com.ypyg.shopmanager.common.AppUtil;
@@ -28,16 +29,18 @@ import com.ypyg.shopmanager.common.Constants;
 import com.ypyg.shopmanager.common.DataCener;
 import com.ypyg.shopmanager.common.DataService;
 import com.ypyg.shopmanager.event.BusProvider;
+import com.ypyg.shopmanager.event.GoodSortsEvent;
 import com.ypyg.shopmanager.event.TabSelectionEvent;
 import com.ypyg.shopmanager.fragment.FragmentIndex2;
 import com.ypyg.shopmanager.fragment.FragmentMarket;
 import com.ypyg.shopmanager.fragment.FragmentMine;
+import com.ypyg.shopmanager.net.IRespCode;
 import com.ypyg.shopmanager.view.uploadphoto.CropImageActivity;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 	private String tag = "MainActivity";
 	/**
-	 * 用于展示消息的Fragment
+	 * 用于展示首页的Fragment
 	 */
 	private FragmentIndex2 fragmentIndex;
 
@@ -147,6 +150,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		fragmentManager = getSupportFragmentManager();
 		// 第一次启动时选中第0个tab
 		setTabSelection(0);
+
 	}
 
 	String newsAction = "com.schoolnews.pushservice.action.news";
@@ -173,12 +177,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private void first() {
 		// mDataCener = DataCener.getInstance();
 		// mDataService = mDataCener.getDataService();
-		mContext = this;
 		// NotificationReceiver.msgtype = getIntent().getStringExtra("msgtype");
 		// if (mDataCener.IsUserLogin()) {
 		//
 		// }
 		// initPush();
+		mContext = this;
 	}
 
 	/**
@@ -353,9 +357,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case AppUtil.FLAG_CHOOSE_PHONE:// 拍照返回
-				Uri uri1 =AppUtil.tempUri;
-				if (uri1 != null) {
-					startPhotoZoom(uri1);
+			Uri uri1 = AppUtil.tempUri;
+			if (uri1 != null) {
+				startPhotoZoom(uri1);
 			}
 
 			break;
@@ -376,8 +380,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					intent.putExtra("state", Constants.GOODEDIT_ADD);
 					intent.putExtra("imagepath", path);
 					mContext.startActivity(intent);
-//					Bitmap bitmap = Bimp.getLoacalBitmap(path);
-//					Toast.makeText(mContext, "裁剪成功", 1000).show();
+					// Bitmap bitmap = Bimp.getLoacalBitmap(path);
+					// Toast.makeText(mContext, "裁剪成功", 1000).show();
 
 				}
 			}

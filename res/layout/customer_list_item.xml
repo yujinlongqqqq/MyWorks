@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.ypyg.shopmanager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/detail_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/front"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/bgcolor"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:orientation="horizontal"
+                android:padding="10dp" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp" >
+
+                    <com.ypyg.shopmanager.view.roundedimageview.RoundAngleImageView
+                        android:id="@+id/small_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/smallhead"
+                        app:roundHeight="5dp"
+                        app:roundWidth="5dp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/customer_name"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:singleLine="false"
+                            android:text="加肥猫"
+                            android:textColor="@color/black2"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="right"
+                            android:textColor="@color/black2"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/customer_phone"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:singleLine="false"
+                            android:text="18768104716"
+                            android:textColor="@color/black2"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/good_total_volume"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="right"
+                            android:textColor="@color/black2"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:background="@color/gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp" >
+
+                    <TextView
+                        style="@style/customer_list_item_bottom_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="积分:" />
+
+                    <TextView
+                        android:id="@+id/customer_score"
+                        style="@style/customer_list_item_bottom_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1200" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/customer_list_item_bottom_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单数:" />
+
+                    <TextView
+                        android:id="@+id/customer_order_num"
+                        style="@style/customer_list_item_bottom_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="23" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/customer_list_item_bottom_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="赠送积分:" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- <TextView -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="1px" -->
+    <!-- android:background="@color/color_line" /> -->
+
+</LinearLayout>

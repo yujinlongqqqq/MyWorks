@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -20,24 +21,24 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.Toast;
 
 import com.ypyg.shopmanager.R;
 import com.ypyg.shopmanager.activity.BaseActivity;
+import com.ypyg.shopmanager.bean.GoodParentsSortBean;
+import com.ypyg.shopmanager.bean.GoodSortBean;
 import com.ypyg.shopmanager.cache.ImageCache;
 import com.ypyg.shopmanager.common.AppUtil;
 import com.ypyg.shopmanager.common.Bimp;
 import com.ypyg.shopmanager.common.Constants;
 import com.ypyg.shopmanager.common.CropSaveImage;
+import com.ypyg.shopmanager.common.DataCener;
 import com.ypyg.shopmanager.common.ImageCacheManager;
 import com.ypyg.shopmanager.common.util.FileUtils;
 import com.ypyg.shopmanager.event.GoodDetailEvent;
@@ -47,10 +48,9 @@ import com.ypyg.shopmanager.event.ImageUploadInfoEvent;
 import com.ypyg.shopmanager.libcore.io.DiskLruCache;
 import com.ypyg.shopmanager.libcore.io.DiskLruCache.Snapshot;
 import com.ypyg.shopmanager.net.IRespCode;
-import com.ypyg.shopmanager.view.loadingview.DialogUtil;
-import com.ypyg.shopmanager.view.popupwindow.DoubleSelectPopupWindow;
-import com.ypyg.shopmanager.view.popupwindow.DoubleSelectPopupWindow.DoubleSelectSubmit;
 import com.ypyg.shopmanager.view.popupwindow.SelectPicPopupWindow;
+import com.ypyg.shopmanager.view.popupwindow.SortSelectPopupWindow;
+import com.ypyg.shopmanager.view.popupwindow.SortSelectPopupWindow.SortSelectSubmit;
 import com.ypyg.shopmanager.view.uploadphoto.CropImageActivity;
 
 /**
@@ -73,9 +73,11 @@ public class ActivityGoodEdit extends BaseActivity {
 
 	private EditText mAutoCompleteTextView, good_weight;
 
-	private DoubleSelectPopupWindow mDoubleSelectPopupWindow = null;
-	private String[] firstMenu1 = { "个人护肤", "彩妆", "身体护理", "香氛", "其它" };
-	private String[] secondMenu2 = { "全部", "珀莱雅", "韩束", "兰瑟", "自然堂" };
+	private SortSelectPopupWindow mDoubleSelectPopupWindow = null;
+	private List<GoodParentsSortBean> mGoodSorts;// 网络的商品分类
+	private String[] firstMenu1;
+	private String[][] secondMenu2;
+	private int mPosition1, mPosition2;// 记录分类的位置
 	private View top_condition = null;
 
 	private String imagePath = "";
@@ -100,12 +102,15 @@ public class ActivityGoodEdit extends BaseActivity {
 
 	}
 
-	private DoubleSelectSubmit mDoubleSelectSubmit = new DoubleSelectSubmit() {
+	private SortSelectSubmit mDoubleSelectSubmit = new SortSelectSubmit() {
 
 		@Override
-		public void submit(String value1, String value2) {
+		public void submit(String value1, String value2, Integer position1, Integer position2) {
+			mPosition1 = position1;
+			mPosition2 = position2;
 			mAutoCompleteTextView.setText(value1 + ";" + value2);
 		}
+
 	};
 
 	/**
@@ -117,18 +122,8 @@ public class ActivityGoodEdit extends BaseActivity {
 		top_condition = findViewById(R.id.top_condition);
 		good_weight = (EditText) findViewById(R.id.good_weight);
 		mAutoCompleteTextView = (EditText) findViewById(R.id.autotext);
-		mDoubleSelectPopupWindow = new DoubleSelectPopupWindow(mContext);
-		mDoubleSelectPopupWindow.setData(firstMenu1, secondMenu2);
-		mDoubleSelectPopupWindow.setListener(mDoubleSelectSubmit);
-		mAutoCompleteTextView.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// 选择分类
-				KeyBoardCancle();
-				mDoubleSelectPopupWindow.show(top_condition);
-			}
-		});
+		
+		initPopWin();
 
 		upload_imageview = (ImageView) findViewById(R.id.upload_imageview);
 		cropSaveImage = new CropSaveImage(mContext);
@@ -162,6 +157,39 @@ public class ActivityGoodEdit extends BaseActivity {
 			}
 		});
 
+	}
+
+	/**
+	 * 初始化筛选弹出窗口
+	 */
+	private void initPopWin() {
+		// 判断获取的商品分类
+		if (mGoodSorts != null && mGoodSorts.size() > 0) {
+			firstMenu1 = new String[mGoodSorts.size()];
+			secondMenu2 = new String[mGoodSorts.size()][];
+			for (int i = 0; i < mGoodSorts.size(); i++) {
+				firstMenu1[i] = mGoodSorts.get(i).getName();
+				List<GoodSortBean> data = mGoodSorts.get(i).getData();
+				secondMenu2[i] = new String[data.size()];
+				for (int j = 0; j < data.size(); j++) {
+					secondMenu2[i][j] = data.get(j).getName();
+				}
+			}
+
+			mDoubleSelectPopupWindow = new SortSelectPopupWindow(mContext, firstMenu1, secondMenu2);
+			mDoubleSelectPopupWindow.setListener(mDoubleSelectSubmit);
+			mAutoCompleteTextView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// 选择分类
+					KeyBoardCancle();
+					mDoubleSelectPopupWindow.show(top_condition);
+				}
+			});
+		} else {
+			mAutoCompleteTextView.setVisibility(View.GONE);
+		}
 	}
 
 	// 为弹出窗口实现监听类
@@ -273,12 +301,12 @@ public class ActivityGoodEdit extends BaseActivity {
 
 	protected void onEventMainThread(ImageUploadInfoEvent event) {
 		loadingView.dismiss();
-		if (event.getCode() == IRespCode.SUCCESS){
+		if (event.getCode() == IRespCode.SUCCESS) {
 			mDataCener.showToast(mContext, "图片上传成功地址：" + "http://wxmall.wuyuejin.net/data/attachment/" + event.getUrl());
 			return;
 		}
 		mDataCener.showToast(mContext, "图片上传失败！");
-		
+
 	}
 
 	private String OriginalPath = "";
@@ -311,6 +339,9 @@ public class ActivityGoodEdit extends BaseActivity {
 		goodId = getIntent().getLongExtra("id", -1L);
 		goodState = getIntent().getIntExtra("state", -1);
 
+		mDataCener = DataCener.getInstance();
+		if (!AppUtil.isNull(mDataCener))
+			mDataService = mDataCener.getDataService();
 	}
 
 	private void initView1() {

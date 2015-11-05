@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="8dp"
+        android:padding="20dp"
+        android:text="店铺简介：\n\t\t的时候的撒嘎嘎电饭锅发的方法订货会分隔符该方法发地方地方"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#444" />
+
+    <include layout="@layout/shop_divider" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item1"
+            style="@style/logoText"
+            android:text="@string/mingcheng" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="店铺名称"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow1"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/home_line" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item2"
+            style="@style/logoText"
+            android:text="@string/jianjie" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="店铺简介"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow2"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/home_line" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item3"
+            style="@style/logoText"
+            android:text="@string/lianjie" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="店铺链接"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow3"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <include layout="@layout/shop_divider" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout4"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item4"
+            style="@style/logoText"
+            android:text="@string/icologo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="店铺Logo"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow4"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/home_line" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item5"
+            style="@style/logoText"
+            android:text="@string/fengmian" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="店铺封面"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow5"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <include layout="@layout/shop_divider" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout6"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item6"
+            style="@style/logoText"
+            android:text="@string/lianxiren" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="联系人"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow6"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/home_line" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout7"
+        android:onClick="toEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shopitem_color_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/text_item7"
+            style="@style/logoText"
+            android:text="@string/dizhi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="联系地址"
+            android:textColor="@drawable/text_color_bg"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/activity_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/arrow7"
+            style="@style/style_setup_rightarrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/home_line" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@color/color_dotted_line_bg2" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/home_line" />
+
+</LinearLayout>

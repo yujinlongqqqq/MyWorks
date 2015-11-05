@@ -20,7 +20,9 @@ import com.ypyg.shopmanager.activity.promotion.ActivityPromotionManager;
 import com.ypyg.shopmanager.activity.shop.ActivityShopManager;
 import com.ypyg.shopmanager.bean.BaseStatusInfoBean;
 import com.ypyg.shopmanager.common.AppUtil;
+import com.ypyg.shopmanager.common.DataCener;
 import com.ypyg.shopmanager.event.BaseStatusEvent;
+import com.ypyg.shopmanager.event.GoodSortsEvent;
 import com.ypyg.shopmanager.net.IRespCode;
 import com.ypyg.shopmanager.view.popupwindow.GoodAddPopupWindow;
 import com.ypyg.shopmanager.view.textcounter.CounterView;
@@ -72,6 +74,26 @@ public class FragmentIndex2 extends BaseFragment implements OnClickListener {
 		mContext = getActivity();
 		deviceHeight = getResources().getDisplayMetrics().heightPixels;
 		iconfont = Typeface.createFromAsset(mContext.getAssets(), "iconfont.ttf");
+
+		mDataCener = DataCener.getInstance();
+		// loading_dialog = mDataCener.createLoadingDialog(mContext);
+		if (!AppUtil.isNull(mDataCener))
+			mDataService = mDataCener.getDataService();
+	}
+
+	/**
+	 * 请求商品分类并存入mDataCener
+	 */
+	private void req() {
+		// mDataService.BaseStatus();
+		mDataService.getGoodSorts(mDataCener.mBasicUserInfoBean.getId());
+	}
+
+	protected void onEventMainThread(GoodSortsEvent event) {
+		if (null == event || IRespCode.SUCCESS != event.getCode()) {
+			return;
+		}
+		mDataCener.mGoodSorts = event.getInfobean();
 	}
 
 	private void initView() {
@@ -102,10 +124,6 @@ public class FragmentIndex2 extends BaseFragment implements OnClickListener {
 		// LayoutParams.WRAP_CONTENT, deviceHeight));
 		// AppUtil.applyFont(mContext, index_daily_amount,
 		// "fonts/scoreboard.ttf");
-	}
-
-	private void req() {
-		// mDataService.BaseStatus();
 	}
 
 	private void setData() {

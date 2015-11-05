@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/main_top_back" />
+
+    <com.ypyg.shopmanager.view.otheroffset.OverScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/color_background"
+        android:scrollbars="none" >
+
+        <!-- <ScrollView -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="fill_parent" -->
+        <!-- android:background="@color/color_background" -->
+        <!-- android:scrollbars="none" > -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="4"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:background="@color/color_background" />
+
+                <LinearLayout
+                    android:id="@+id/promotion_discount_coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_weight="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="优惠券"
+                        android:textColor="@color/text_color1"
+                        android:textSize="15sp" />
+
+                    <!-- <TextView -->
+                    <!-- android:layout_width="2dp" -->
+                    <!-- android:layout_height="25dp" -->
+                    <!-- android:layout_marginLeft="10dp" -->
+                    <!-- android:layout_weight="0" -->
+                    <!-- android:background="@color/bluecolor" -->
+                    <!-- android:visibility="gone" /> -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/activity_text_color"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/parent_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        style="@style/style_setup_rightarrow"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="0dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:background="@color/color_background" />
+
+                <LinearLayout
+                    android:id="@+id/promotion_integral_exchange"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_weight="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="积分换购"
+                        android:textColor="@color/text_color1"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/activity_text_color"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/child_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        style="@style/style_setup_rightarrow"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="0dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:background="@color/color_background" />
+
+                <LinearLayout
+                    android:id="@+id/promotion_daily_signin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_weight="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="每日签到"
+                        android:textColor="@color/text_color1"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/activity_text_color"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        style="@style/style_setup_rightarrow"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="0dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:background="@color/color_background" />
+
+                <LinearLayout
+                    android:id="@+id/promotion_turnplate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_weight="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="大转盘抽奖"
+                        android:textColor="@color/text_color1"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/activity_text_color"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        style="@style/style_setup_rightarrow"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="0dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:background="@color/color_background" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- </ScrollView> -->
+
+    </com.ypyg.shopmanager.view.otheroffset.OverScrollView>
+
+</LinearLayout>

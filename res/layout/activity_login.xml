@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
+    style="@style/style_background_page"
+    android:background="@color/main_color1" >
+
+    <RelativeLayout
+        style="@style/style_title"
+        android:background="@null" >
+
+        <ImageView
+            style="@style/style_title_back_btn"
+            android:onClick="back" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/login_logo" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="130dp"
+            android:layout_weight="5"
+            android:orientation="vertical" >
+
+            <LinearLayout style="@style/style_login_edit_text_back" >
+
+                <TextView
+                    style="@style/style_login_edit_text_note"
+                    android:text="@string/activity_login_note_phonenumber"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/login_user_edit"
+                    style="@style/style_login_edit_text"
+                    android:layout_marginLeft="20dp"
+                    android:hint="手机号码"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/input_delete1"
+                    style="@style/style_login_edit_text_delete"
+                    android:drawableRight="@drawable/input_delete_one"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_login_edit_text_back" >
+
+                <TextView
+                    style="@style/style_login_edit_text_note"
+                    android:text="@string/activity_login_note_password"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/login_passwd_edit"
+                    style="@style/style_login_edit_text"
+                    android:layout_marginLeft="20dp"
+                    android:hint="密码"
+                    android:inputType="textWebPassword"
+                    android:maxLength="18"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/input_delete2"
+                    style="@style/style_login_edit_text_delete"
+                    android:drawableRight="@drawable/input_delete_one"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/input_linlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <com.ypyg.shopmanager.view.rippleeffectview.RippleView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    ripple:rv_type="rectangle"
+                    ripple:rv_zoom="true" >
+
+                    <Button
+                        android:id="@+id/login_login_btn"
+                        style="@style/style_login_btn"
+                        android:onClick="login"
+                        android:text="@string/activity_login_note_login" />
+                </com.ypyg.shopmanager.view.rippleeffectview.RippleView>
+
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="@dimen/layout_margin_top25dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/forget_passwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/getpwd_ico" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_margin_left5dp"
+                        android:text="@string/activity_login_note_forgetpass"
+                        android:textColor="@color/white2"
+                        android:textSize="@dimen/activity_login_textsize15sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/top_condition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2F2F2"
+        android:visibility="gone" >
+
+        <com.ypyg.shopmanager.view.SyncHorizontalScrollView
+            android:id="@+id/mHsv"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:id="@+id/rl_nav"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" >
+
+                <LinearLayout
+                    android:id="@+id/rg_nav_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <!-- <RelativeLayout -->
+                    <!-- android:layout_width="fill_parent" -->
+                    <!-- android:layout_height="fill_parent" -->
+                    <!-- android:background="@color/white" > -->
+
+
+                    <!-- <ImageView -->
+                    <!-- android:id="@+id/smalllogo" -->
+                    <!-- android:layout_width="wrap_content" -->
+                    <!-- android:layout_height="wrap_content" -->
+                    <!-- android:layout_centerHorizontal="true" -->
+                    <!-- android:layout_marginLeft="7dp" -->
+                    <!-- android:layout_marginRight="7dp" -->
+                    <!-- android:scaleType="fitCenter" -->
+                    <!-- android:src="@drawable/scxh1" -->
+                    <!-- android:tag="coursebg" /> -->
+
+
+                    <!-- <TextView -->
+                    <!-- android:id="@+id/text" -->
+                    <!-- android:layout_width="wrap_content" -->
+                    <!-- android:layout_height="wrap_content" -->
+                    <!-- android:layout_below="@id/smalllogo" -->
+                    <!-- android:layout_marginLeft="7dp" -->
+                    <!-- android:layout_marginRight="7dp" -->
+                    <!-- android:gravity="center" -->
+                    <!-- android:tag="coursetext" -->
+                    <!-- android:text="fdsfsd" -->
+                    <!-- android:textColor="@color/black2" -->
+                    <!-- android:textSize="15sp" /> -->
+                    <!-- </RelativeLayout> -->
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_nav_indicator"
+                    android:layout_width="1dip"
+                    android:layout_height="5dip"
+                    android:layout_alignParentBottom="true"
+                    android:contentDescription="@string/nav_desc"
+                    android:scaleType="matrix"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </com.ypyg.shopmanager.view.SyncHorizontalScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.ypyg.shopmanager.view.swipemenulistview.PullToRefreshSwipeMenuListView
+            android:id="@+id/swipe_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </com.ypyg.shopmanager.view.swipemenulistview.PullToRefreshSwipeMenuListView>
+
+        <LinearLayout
+            android:id="@+id/batch_good_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal" 
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/batch_good_cancle_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_orange_radius"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/white2"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/batch_good_offline_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/btn_orange_radius"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="下架"
+                android:textColor="@color/white2"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/top_condition_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/good_cat_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent_half" />
+
+            <com.ypyg.shopmanager.view.topcondition.TopConditionList
+                android:id="@+id/good_cat_menu"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@color/white" >
+            </com.ypyg.shopmanager.view.topcondition.TopConditionList>
+        </FrameLayout>
+    </RelativeLayout>
+
+</LinearLayout>

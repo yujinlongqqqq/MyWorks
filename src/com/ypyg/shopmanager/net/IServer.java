@@ -12,6 +12,8 @@ public interface IServer {
 	public static final String Logoin_URL = "/login/index";
 	/**退出登录**/
 	public static final String EXIT_LOGOIN_URL = "/login/login_out";
+	/**获取商品分类**/
+	public static final String GET_SORT_URL = "/good/sgcat_ids";
 	/**线上商品列表**/
 	public static final String OnlineGood_URL = "/good/goodsonline";
 	/**线下商品列表**/

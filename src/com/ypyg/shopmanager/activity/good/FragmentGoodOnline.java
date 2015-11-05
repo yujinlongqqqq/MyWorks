@@ -30,12 +30,13 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ypyg.shopmanager.R;
 import com.ypyg.shopmanager.adapter.AdapterGoodOnlineList;
 import com.ypyg.shopmanager.bean.GoodCategoryBean;
 import com.ypyg.shopmanager.bean.GoodInfoBean;
+import com.ypyg.shopmanager.bean.GoodParentsSortBean;
+import com.ypyg.shopmanager.bean.GoodSortBean;
 import com.ypyg.shopmanager.cache.ImageCache;
 import com.ypyg.shopmanager.common.AppUtil;
 import com.ypyg.shopmanager.common.Constants;
@@ -48,17 +49,16 @@ import com.ypyg.shopmanager.event.GoodSStatusEvent;
 import com.ypyg.shopmanager.event.GoodStatusEvent;
 import com.ypyg.shopmanager.event.ImageForSdkTenEvent;
 import com.ypyg.shopmanager.event.ImageLoadFinishEvent;
-import com.ypyg.shopmanager.event.TestDataEvent;
 import com.ypyg.shopmanager.fragment.BaseFragment;
 import com.ypyg.shopmanager.libcore.io.DiskLruCache;
 import com.ypyg.shopmanager.libcore.io.DiskLruCache.Snapshot;
 import com.ypyg.shopmanager.net.IRespCode;
 import com.ypyg.shopmanager.view.SyncHorizontalScrollView;
 import com.ypyg.shopmanager.view.loadingview.DialogUtil;
-import com.ypyg.shopmanager.view.popupwindow.DoubleSelectPopupWindow;
-import com.ypyg.shopmanager.view.popupwindow.DoubleSelectPopupWindow.DoubleSelectSubmit;
 import com.ypyg.shopmanager.view.popupwindow.MoreMenuPopupWindow;
 import com.ypyg.shopmanager.view.popupwindow.MoreMenuPopupWindow.MoreMenuListener;
+import com.ypyg.shopmanager.view.popupwindow.SortSelectPopupWindow;
+import com.ypyg.shopmanager.view.popupwindow.SortSelectPopupWindow.SortSelectSubmit;
 import com.ypyg.shopmanager.view.pulltorefresh.PullToRefreshBase;
 import com.ypyg.shopmanager.view.pulltorefresh.PullToRefreshBase.OnRefreshListener;
 import com.ypyg.shopmanager.view.swipemenulistview.PullToRefreshSwipeMenuListView;
@@ -114,9 +114,11 @@ public class FragmentGoodOnline extends BaseFragment {
 	private TextView batch_good_cancle_btn = null;
 	private TextView batch_good_offline_btn = null;
 
-	private DoubleSelectPopupWindow mDoubleSelectPopupWindow = null;
-	private String[] firstMenu1 = { "个人护肤", "彩妆", "身体护理", "香氛", "其它" };
-	private String[] secondMenu2 = { "全部", "珀莱雅", "韩束", "兰瑟", "自然堂" };
+	private SortSelectPopupWindow mDoubleSelectPopupWindow = null;
+	private List<GoodParentsSortBean> mGoodSorts;// 网络的商品分类
+	private String[] firstMenu1;
+	private String[][] secondMenu2;
+	private int mPosition1, mPosition2;// 记录分类的位置
 
 	// 加载中
 	private Dialog loadingView = null;
@@ -180,8 +182,30 @@ public class FragmentGoodOnline extends BaseFragment {
 		mHsv.setSomeParam(rl_nav, (Activity) mContext);
 		initPullToRefreshListView();
 
-		mDoubleSelectPopupWindow = new DoubleSelectPopupWindow(mContext);
+		//初始化筛选弹出窗口
+		initPopWin();
+	}
 
+	/**
+	 * 初始化筛选弹出窗口
+	 */
+	private void initPopWin() {
+		// 判断获取的商品分类
+		mGoodSorts = mDataCener.mGoodSorts;
+		if (mGoodSorts != null && mGoodSorts.size() > 0) {
+			firstMenu1 = new String[mGoodSorts.size()];
+			secondMenu2 = new String[mGoodSorts.size()][];
+			for (int i = 0; i < mGoodSorts.size(); i++) {
+				firstMenu1[i] = mGoodSorts.get(i).getName();
+				List<GoodSortBean> data = mGoodSorts.get(i).getData();
+				secondMenu2[i] = new String[data.size()];
+				for (int j = 0; j < data.size(); j++) {
+					secondMenu2[i][j] = data.get(j).getName();
+				}
+			}
+			mDoubleSelectPopupWindow = new SortSelectPopupWindow(mContext, firstMenu1, secondMenu2);
+			mDoubleSelectPopupWindow.setListener(mDoubleSelectSubmit);
+		}
 	}
 
 	private void setListener() {
@@ -567,21 +591,26 @@ public class FragmentGoodOnline extends BaseFragment {
 				public void onClick(View v) {
 					top_condition_list_layout.setVisibility(View.GONE);
 					clearTopBg();
-
-					mDoubleSelectPopupWindow.setData(firstMenu1, secondMenu2);
-					mDoubleSelectPopupWindow.show(top_condition);
-					mDoubleSelectPopupWindow.setListener(mDoubleSelectSubmit);
+					if(mDoubleSelectPopupWindow==null){
+						initPopWin();
+					}else{
+						mDoubleSelectPopupWindow.show(top_condition);
+					}
+					
 				}
 			});
 		}
 	}
 
-	private DoubleSelectSubmit mDoubleSelectSubmit = new DoubleSelectSubmit() {
+	private SortSelectSubmit mDoubleSelectSubmit = new SortSelectSubmit() {
 
 		@Override
-		public void submit(String value1, String value2) {
-			mDataCener.showToast(mContext, "上架页面" + "，条件刷新：" + value1 + ";" + value2);
+		public void submit(String value1, String value2, Integer position1, Integer position2) {
+			mPosition1 = position1;
+			mPosition2 = position2;
+			mDataCener.showToast(mContext, "上架页面" + "，条件刷新：" + value1 + "id=" + mGoodSorts.get(mPosition1).getId() + "；" + value2 + "id=" + mGoodSorts.get(mPosition1).getData().get(mPosition2).getId());
 		}
+
 	};
 
 	private OnClickListener batchCancleL = new OnClickListener() {
@@ -752,12 +781,12 @@ public class FragmentGoodOnline extends BaseFragment {
 				imageView.setImageBitmap(bitmap);
 		}
 	}
-	
-//	/**
-//	 * 原始数据响应
-//	 * @param event
-//	 */
-//	protected void onEventMainThread(TestDataEvent event) {
-//		Toast.makeText(mContext, event.getData(), 500).show();
-//	}
+
+	// /**
+	// * 原始数据响应
+	// * @param event
+	// */
+	// protected void onEventMainThread(TestDataEvent event) {
+	// Toast.makeText(mContext, event.getData(), 500).show();
+	// }
 }

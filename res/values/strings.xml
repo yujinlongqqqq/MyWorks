@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">商店管家</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activity_good_manager">ActivityGoodManager</string>
+    <string name="gl_wait">请稍等</string>
+    <!-- activity_setup设置页面 -->
+    <string name="update">升级</string>
+    <string name="update_content">发现新版本，是否升级？</string>
+    <string name="chat_copy">复制</string>
+    <string name="chat_resend">重新发送</string>
+    <string name="feed_back_note">非常感谢您的建议，相信在您的支持下我们的产品会越多越好。</string>
+    <!-- activity_login登陆页面 -->
+    <string name="activity_login_note_registeredphone">注册的手机号</string>
+    <string name="activity_login_note_phonenumber">手机号</string>
+    <string name="activity_login_note_password">密码</string>
+    <string name="activity_login_note_signfree">注 册</string>
+    <string name="activity_login_note_forgetpass">忘记密码</string>
+    <string name="activity_login_note_login">登 录</string>
+    <!-- 自更新 -->
+    <string name="soft_update_title">发现新版本</string>
+    <string name="soft_update_info">新版本更新，请立即升级!\n</string>
+    <string name="soft_update_info2">新版本更新内容:\n</string>
+    <string name="soft_update_updatebtn">欣然升级</string>
+    <string name="soft_update_later">残忍拒绝</string>
+    <string name="soft_update_later2">默默离开</string>
+    <string name="soft_update_no">soft_update_no</string>
+    <string name="soft_updating">更新中...</string>
+    <string name="soft_update_cancel">取消</string>
+    <!-- 自更新 -->
+    <string name="cancel">取消</string>
+
+    <!-- ActivityGoodEdit商品编辑页面 -->
+    <string name="savebutton">保存</string>
+    <string name="edittitle">商品编辑</string>
+    <string name="goodname">商品标题</string>
+    <string name="goodweight">商品重量</string>
+    <string name="goodmilliliter">毫升</string>
+    <string name="goodprice">商品价格</string>
+    <string name="basissales">基础销量</string>
+    <string name="uploadimage">上传图片</string>
+    <string name="goodinventory">商品库存</string>
+    <string name="goodnumber">货号</string>
+    <string name="goodcategories">所属分类</string>
+    <string name="goodcount">库存计数</string>
+    <string name="goodcounttrue">拍下减库存</string>
+    <string name="goodcountfalse">付款减库存</string>
+    <string name="goodissale">是否促销</string>
+    <string name="saletrue">是</string>
+    <string name="salefalse">否</string>
+    <string name="timeup">定时上架</string>
+    <string name="timedown">定时下架</string>
+    <!-- 下拉刷新 -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">努力加载更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+    <!-- 店铺图标 -->
+    <string name="mingcheng">&#xe6ab;</string>
+    <string name="jianjie">&#xe64b;</string>
+    <string name="lianjie">&#xe617;</string>
+    <string name="icologo">&#xe6d0;</string>
+    <string name="fengmian">&#xe62a;</string>
+    <string name="lianxiren">&#xe628;</string>
+    <string name="dizhi">&#xe60d;</string>
+    <string name="jiantou">&#xe608;</string>
+    <string name="tianjia">&#xe69e;</string>
+    <string name="shangdian">&#xf006f;</string>
+    <string name="gouwuche">&#xe6a1;</string>
+    <string name="wode">&#xe6f0;</string>
+    <!-- 商店管理 -->
+    <string name="activity_edit_name">修改店铺名称</string>
+    <string name="activity_edit_name_save">保存</string>
+    <string name="activity_edit_name_hint">设置店铺名称</string>
+
+</resources>

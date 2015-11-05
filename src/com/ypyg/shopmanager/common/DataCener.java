@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -30,6 +31,7 @@ import android.widget.Toast;
 
 import com.ypyg.shopmanager.R;
 import com.ypyg.shopmanager.bean.BasicUserInfoBean;
+import com.ypyg.shopmanager.bean.GoodParentsSortBean;
 import com.ypyg.shopmanager.bean.PhoneInfo;
 import com.ypyg.shopmanager.cache.ByteCache;
 import com.ypyg.shopmanager.cache.ImageCache;
@@ -52,6 +54,8 @@ public class DataCener {
 	private DataService mDataService = null;
 	private String channelnumber;// 渠道编号
 
+	/**商品分类**/
+	public List<GoodParentsSortBean> mGoodSorts;
 	// 当前权限码
 	private int permission = 7;
 	// 主服务器的域名

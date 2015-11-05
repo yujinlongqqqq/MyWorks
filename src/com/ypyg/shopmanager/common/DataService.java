@@ -28,6 +28,7 @@ import com.ypyg.shopmanager.event.GoodOfflineListEvent;
 import com.ypyg.shopmanager.event.GoodOnlineListEvent;
 import com.ypyg.shopmanager.event.GoodSChooseEvent;
 import com.ypyg.shopmanager.event.GoodSStatusEvent;
+import com.ypyg.shopmanager.event.GoodSortsEvent;
 import com.ypyg.shopmanager.event.GoodStatusEvent;
 import com.ypyg.shopmanager.event.GoodUpdateEvent;
 import com.ypyg.shopmanager.event.IEvent;
@@ -71,6 +72,7 @@ import com.ypyg.shopmanager.req.GoodOfflineListReq;
 import com.ypyg.shopmanager.req.GoodOnlineListReq;
 import com.ypyg.shopmanager.req.GoodSChooseReq;
 import com.ypyg.shopmanager.req.GoodSStatusReq;
+import com.ypyg.shopmanager.req.GoodSortsReq;
 import com.ypyg.shopmanager.req.GoodStatusReq;
 import com.ypyg.shopmanager.req.GoodUpdateReq;
 import com.ypyg.shopmanager.req.ImageDownloadReq;
@@ -98,6 +100,7 @@ import com.ypyg.shopmanager.resp.GoodOfflineListResp;
 import com.ypyg.shopmanager.resp.GoodOnlineListResp;
 import com.ypyg.shopmanager.resp.GoodSChooseResp;
 import com.ypyg.shopmanager.resp.GoodSStatusResp;
+import com.ypyg.shopmanager.resp.GoodSortsResp;
 import com.ypyg.shopmanager.resp.GoodStatusResp;
 import com.ypyg.shopmanager.resp.GoodUpdateResp;
 import com.ypyg.shopmanager.resp.ImageDownloadResp;
@@ -255,6 +258,16 @@ public class DataService implements IRespCode {
 		final ExitLoginEvent aEvent = new ExitLoginEvent();
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
+	
+	/**
+	 * 获取商品分类
+	 */
+	public void getGoodSorts(Integer uid){
+		final GoodSortsReq aReq = new GoodSortsReq(uid);
+		final GoodSortsResp aResp = new GoodSortsResp();
+		final GoodSortsEvent aEvent = new GoodSortsEvent();
+		AsyncPostCommand(aReq, aResp, aEvent);
+	}
 
 	// 获取验证码
 	public void GetValidate(String username, String password, String auto) {
@@ -272,7 +285,12 @@ public class DataService implements IRespCode {
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
 
-	// 上架商品列表
+	/**
+	 * 上架商品列表
+	 * @param catid
+	 * @param offset
+	 * @param count
+	 */
 	public void GoodOnlineList(String catid, Long offset, Long count) {
 		final GoodOnlineListReq aReq = new GoodOnlineListReq(catid, offset, count);
 		final GoodOnlineListResp aResp = new GoodOnlineListResp();
@@ -280,7 +298,12 @@ public class DataService implements IRespCode {
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
 
-	// 下架商品列表
+	/**
+	 * 下架商品列表
+	 * @param catid
+	 * @param offset
+	 * @param count
+	 */
 	public void GoodOfflineList(String catid, Long offset, Long count) {
 		final GoodOfflineListReq aReq = new GoodOfflineListReq(catid, offset, count);
 		final GoodOfflineListResp aResp = new GoodOfflineListResp();
@@ -288,7 +311,10 @@ public class DataService implements IRespCode {
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
 
-	// 商品明细
+	/**
+	 * 商品明细
+	 * @param id
+	 */
 	public void GoodDetail(String id) {
 		final GoodDetailReq aReq = new GoodDetailReq(id);
 		final GoodDetailResp aResp = new GoodDetailResp();

@@ -9,7 +9,6 @@ import com.ypyg.shopmanager.common.DataCener;
 
 public class ExitLoginReq extends BaseQueryReq {
 	// private String token = "login" + Constants.secretKey + "index";
-	private String token = "c06d7920cb09766e6a37259427d0d1";
 	private final ExitLoginReqBean mReqBean = new ExitLoginReqBean();
 
 	public ExitLoginReq(Integer uid) {

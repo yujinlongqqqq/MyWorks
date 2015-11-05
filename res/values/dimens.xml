@@ -1,0 +1,164 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="two_hundred_twenty_five_hight">225dp</dimen>
+    <dimen name="crop_image">100dp</dimen>
+    <dimen name="rowlines_hight">0.7px</dimen>
+ <!-- 分割线高度 -->
+    <dimen name="rowlines_hights">10px</dimen>
+ <!-- 分割条高度 -->
+    <!-- 标题栏返回键宽高 -->
+    <dimen name="reback_btn_width52dp">52dp</dimen>
+    <dimen name="reback_btn_height39dp">39dp</dimen>
+
+    <!-- activity_login登陆界面 -->
+    <dimen name="layout_margin_left20dp">20dp</dimen>
+    <dimen name="layout_margin_left5dp">5dp</dimen>
+    <dimen name="layout_margin_right15dp">15dp</dimen>
+    <dimen name="layout_margin_right30dp">30dp</dimen>
+    <dimen name="layout_margin_right10dp">10dp</dimen>
+    <dimen name="layout_margin_top25dp">25dp</dimen>
+    <dimen name="layout_hight50dp">50dp</dimen>
+    <dimen name="layout_hight45dp">45dp</dimen>
+    <dimen name="layout_hight35dp">35dp</dimen>
+    <dimen name="layout_hight40dp">40dp</dimen>
+    <dimen name="activity_login_textsize15sp">15sp</dimen>
+    <dimen name="activity_login_textsize20sp">20sp</dimen>
+
+    <!-- activity_register注册页面/activity_forget_pwd密码重置页面 -->
+    <dimen name="activity_register_layout_width100dp">100dp</dimen>
+    <dimen name="activity_register_layout_hight40dp">40dp</dimen>
+    <dimen name="activity_register_layout_hight45dp">45dp</dimen>
+    <dimen name="activity_register_layout_height50dp">50dp</dimen>
+    <dimen name="activity_register_layout_margin_left5dp">5dp</dimen>
+    <dimen name="activity_register_layout_margin_left20dp">20dp</dimen>
+    <dimen name="activity_register_layout_margin_left10dp">10dp</dimen>
+    <dimen name="activity_register_textSize13sp">13sp</dimen>
+
+    <!-- activity_setup设置页面 -->
+    <dimen name="activity_setup_margin_right15dp">15dp</dimen>
+    <dimen name="activity_setup_margin_right10dp">10dp</dimen>
+
+    <!-- activity_personal_information个人信息页面 -->
+    <dimen name="activity_personal_information_layout_width100dp">100dp</dimen>
+    <dimen name="activity_personal_information_layout_width20dp">20dp</dimen>
+    <dimen name="activity_personal_information_layout_width10dp">10dp</dimen>
+    <dimen name="activity_personal_information_layout_width18sp">18sp</dimen>
+
+    <!-- activity_course_details课程详情页面 -->
+    <dimen name="activity_course_details_margin_left10dp">10dp</dimen>
+    <dimen name="activity_course_details_margin_left20dp">20dp</dimen>
+
+    <!-- activity_select_subject选择老师科目页面 -->
+    <dimen name="activity_select_subject90dp">90dp</dimen>
+    <dimen name="activity_select_subject50dp">50dp</dimen>
+
+    <!-- activity_select_organization选择机构科目页面 -->
+    <dimen name="activity_select_organization130dp">130dp</dimen>
+    <dimen name="activity_select_organization50dp">50dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin_linearLayout">20dp</dimen>
+    <!-- menu -->
+    <dimen name="shadow_width">5dp</dimen>
+    <dimen name="slidingmenu_offset">300dp</dimen>
+    <!-- /menu -->
+
+    <dimen name="fivedp">5dp</dimen>
+    <dimen name="two_dp">2dp</dimen>
+    <dimen name="sanshiwudp">35dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="fortyfive_dp">45dp</dimen>
+    <dimen name="fifty_dp">50dp</dimen>
+    <dimen name="fifteen_dp">15dp</dimen>
+    <dimen name="cropimagew">260dp</dimen>
+    <dimen name="cropimageh">260dp</dimen>
+    <!-- theme list item dp -->
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="item_in_dp">7dp</dimen>
+    <dimen name="item_out_dp">15dp</dimen>
+    <!-- ////theme list item dp -->
+
+    <dimen name="mytextsize">18sp</dimen>
+    <dimen name="timetablew">30dp</dimen>
+    <dimen name="timetableh">20dp</dimen>
+    <dimen name="thirtyfivedp">35dp</dimen>
+
+    <!-- order -->
+    <dimen name="order_padding">20dp</dimen>
+    <!-- order detail  dimen -->
+    <dimen name="order_detail_padding">20dp</dimen>
+    <dimen name="order_detail_padding2">40dp</dimen>
+    <dimen name="order_detail_paddingtop">5dp</dimen>
+
+    <!-- tutor 项目 华丽丽的分界线++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <dimen name="radio_button_textsize">15sp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="slidingcontentdp">200dp</dimen>
+    <dimen name="smallpreimagesize">80dp</dimen>
+    <dimen name="bigpreimagesize">140dp</dimen>
+    <dimen name="smallpreimage_padding">4dp</dimen>
+    <dimen name="WebActivityTopHeight">30dp</dimen>
+    <dimen name="MainActivityToolBarHeight">42dp</dimen>
+    <dimen name="plan_table_dp">30dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <!-- 为滑动ListView 准备的参数 开始 -->
+    <dimen name="pulldown_headerview_height">70dp</dimen>
+    <dimen name="pulldown_move_deviation">38dp</dimen>
+    <dimen name="pulldown_auto_incremental">6dp</dimen>
+    <dimen name="twodp">2dp</dimen>
+    <!-- 为滑动ListView 准备的参数 结束 -->
+    <!-- mainactivity  五个tab -->
+    <dimen name="tab_normal_height">45dp</dimen>
+    <dimen name="tab_pressed_height">55dp</dimen>
+    <!-- mainactivity -->
+    <!-- 注册登录 -->
+    <dimen name="input_user_width">220dp</dimen>
+    <dimen name="input_pwd_width">220dp</dimen>
+    <dimen name="input_verify_width">100dp</dimen>
+    <!-- 注册登录 -->
+
+
+    <!-- mainactivity -->
+    <!-- 搜索 -->
+    <dimen name="thumb_top_width">65dp</dimen>
+    <!-- 主页tab -->
+    <!-- 搜索 -->
+    <dimen name="tab_seventy_hight">70dp</dimen>
+    <dimen name="tab_eighty_hight">80dp</dimen>
+    <dimen name="tab_sixty_hight">60dp</dimen>
+    <!-- 主页tab -->
+
+    <dimen name="comment_btn_size">20sp</dimen>
+    <dimen name="fu_kuan_with">65dp</dimen>
+    <dimen name="fu_kuan_height">30sp</dimen>
+
+    <!-- 查看课程列表item -->
+    <dimen name="course_item_textsize15sp">15sp</dimen>
+    <dimen name="course_item_textsize10sp">10sp</dimen>
+    <dimen name="course_item_textsize19sp">19sp</dimen>
+    <dimen name="course_item_textsize18sp">18sp</dimen>
+    <dimen name="course_item_textsize13sp">13sp</dimen>
+    <dimen name="course_item_textsize12sp">12sp</dimen>
+
+    <!-- 下拉刷新字体 -->
+    <dimen name="picture_pull_to_refresh_loading_text_size">14dp</dimen>
+    <dimen name="picture_pull_to_refresh_last_update_time_text_size">10dp</dimen>
+    <dimen name="picture_pull_to_refresh_last_update_time_top_margin">6dp</dimen>
+    <dimen name="picture_pull_to_refresh_footer_height">40dp</dimen>
+    <dimen name="commentLy_height">57dip</dimen>
+    
+    
+    <!-- tab框 -->
+    <dimen name="radio_button_conner_radius">5dp</dimen>
+    <dimen name="radio_button_stroke_border">1dp</dimen>
+    
+    <!-- 店铺管理 -->
+    <dimen name="header_height">250dp</dimen>
+    <dimen name="header_logo_size">100dp</dimen>
+
+</resources>
