@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_background_page" >
+
+    <RelativeLayout
+        style="@style/style_title"
+        android:layout_width="match_parent" >
+
+        <ImageView
+            style="@style/style_title_back_btn"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/address_title_toptext"
+            style="@style/style_title_toptext"
+            android:text="@string/edittitle" />
+
+        <TextView
+            android:id="@+id/address_save"
+            style="@style/style_title_right_btn"
+            android:clickable="true"
+            android:text="@string/savebutton" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/top_condition"
+            style="@style/style_background_page"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodname" />
+
+                <EditText
+                    android:id="@+id/good_name"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="商品分类" />
+
+                <EditText
+                    android:id="@+id/autotext"
+                    style="@style/style_edit_item3"
+                    android:focusable="false" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodweight" />
+
+                <EditText
+                    android:id="@+id/good_weight"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <View style="@style/style_dividing_line" />
+
+            <LinearLayout
+                style="@style/style_edit_item1"
+                android:layout_marginTop="0dp" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodmilliliter" />
+
+                <EditText
+                    android:id="@+id/good_milliliter"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodprice" />
+
+                <EditText
+                    android:id="@+id/good_price"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/basissales" />
+
+                <EditText
+                    android:id="@+id/good_basissales"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/style_edit_item1"
+                android:layout_height="100dp"
+                android:paddingRight="0dp" >
+
+                <ImageView
+                    android:id="@+id/upload_imageview"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/no_image_ico" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/good_upload_image"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue"
+                    android:onClick="upLoadImage"
+                    android:text="@string/uploadimage"
+                    android:textColor="@color/white2" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodinventory" />
+
+                <EditText
+                    android:id="@+id/good_inventory"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <View style="@style/style_dividing_line" />
+
+            <LinearLayout
+                style="@style/style_edit_item1"
+                android:layout_marginTop="0dp" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodnumber" />
+
+                <EditText
+                    android:id="@+id/good_number"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodcategories" />
+
+                <EditText
+                    android:id="@+id/good_categories"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodcount" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/counttrue"
+                        style="@style/style_radio_button"
+                        android:checked="true"
+                        android:text="@string/goodcounttrue" />
+
+                    <RadioButton
+                        android:id="@+id/countfalse"
+                        style="@style/style_radio_button"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/goodcountfalse" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/goodissale" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/child_male"
+                        style="@style/style_radio_button"
+                        android:checked="true"
+                        android:text="@string/saletrue" />
+
+                    <RadioButton
+                        android:id="@+id/child_female"
+                        style="@style/style_radio_button"
+                        android:layout_marginLeft="20dp"
+                        android:text="@string/salefalse" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/timeup" />
+
+                <EditText
+                    android:id="@+id/good_timeup"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/style_edit_item1" >
+
+                <TextView
+                    style="@style/style_edit_item2"
+                    android:text="@string/timedown" />
+
+                <EditText
+                    android:id="@+id/good_timedown"
+                    style="@style/style_edit_item3" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

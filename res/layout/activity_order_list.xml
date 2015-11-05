@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_background_page" >
+
+    <include layout="@layout/main_top_back_menu" />
+
+    <RelativeLayout
+        android:id="@+id/rl_tab"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <com.ypyg.shopmanager.view.SyncHorizontalScrollView
+            android:id="@+id/mHsv"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:id="@+id/rl_nav"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" >
+
+                <LinearLayout
+                    android:id="@+id/rg_nav_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <!-- <FrameLayout -->
+                    <!-- android:layout_width="50dp" -->
+                    <!-- android:layout_height="50dp" -->
+                    <!-- android:background="@color/white" > -->
+
+
+                    <!-- <ImageView -->
+                    <!-- android:id="@+id/bg" -->
+                    <!-- android:layout_width="fill_parent" -->
+                    <!-- android:layout_height="fill_parent" -->
+                    <!-- android:scaleType="fitCenter" -->
+                    <!-- android:src="@drawable/homework_selected_date" -->
+                    <!-- android:tag="coursebg" /> -->
+
+
+                    <!-- <TextView -->
+                    <!-- android:id="@+id/text" -->
+                    <!-- android:layout_width="fill_parent" -->
+                    <!-- android:layout_height="fill_parent" -->
+                    <!-- android:gravity="center" -->
+                    <!-- android:tag="coursetext" -->
+                    <!-- android:text="生物" -->
+                    <!-- android:textColor="@color/black2" -->
+                    <!-- android:textSize="14.0dip" /> -->
+                    <!-- </FrameLayout> -->
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_nav_indicator"
+                    android:layout_width="1dip"
+                    android:layout_height="5dip"
+                    android:layout_alignParentBottom="true"
+                    android:contentDescription="@string/nav_desc"
+                    android:scaleType="matrix"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </com.ypyg.shopmanager.view.SyncHorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/iv_nav_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/nav_desc"
+            android:paddingBottom="1dip"
+            android:src="@drawable/iv_navagation_scroll_left"
+            android:visibility="gone" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/iv_nav_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/nav_desc"
+            android:paddingBottom="1dip"
+            android:src="@drawable/iv_navagation_scroll_right"
+            android:visibility="gone" >
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.ypyg.shopmanager.view.pulltorefresh.PullToRefreshListView
+            android:id="@+id/pulltorefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </com.ypyg.shopmanager.view.pulltorefresh.PullToRefreshListView>
+    </RelativeLayout>
+
+</LinearLayout>

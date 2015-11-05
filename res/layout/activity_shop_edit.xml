@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_background_page" >
+
+    <RelativeLayout style="@style/style_title" >
+
+        <ImageView
+            style="@style/style_title_back_btn"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/address_title_toptext"
+            style="@style/style_title_toptext"
+            android:text="@string/activity_edit_name" />
+
+        <TextView
+            android:id="@+id/address_save"
+            style="@style/style_title_right_btn"
+            android:clickable="true"
+            android:text="@string/activity_edit_name_save" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout style="@style/style_setup_background" >
+
+            <EditText
+                android:id="@+id/address_edittext"
+                style="@style/style_edittext_multiline"
+                android:hint="@string/activity_edit_name_hint"
+                android:singleLine="true" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

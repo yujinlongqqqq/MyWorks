@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/gl_choose_img"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:background="@drawable/photo_dialog_button"
+        android:gravity="center"
+        android:text="本地相册"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="1sp"
+        android:background="#000" />
+
+    <TextView
+        android:id="@+id/gl_choose_phone"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:background="@drawable/photo_dialog_button"
+        android:gravity="center"
+        android:text="相机拍照"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/gl_choose_cancel"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+</LinearLayout>

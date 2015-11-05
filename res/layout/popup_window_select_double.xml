@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res/com.ypyg.shopmanager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <View style="@style/style_dividing_line" />
+
+        <RelativeLayout
+            style="@style/style_title"
+            android:layout_height="40dp"
+            android:background="@color/color_background" >
+
+            <TextView
+                android:id="@+id/select_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/big_gray_dark_radius2"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/select_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_gray_radius"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <View style="@style/style_dividing_line" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <com.ypyg.shopmanager.view.wheel.WheelVerticalView
+                android:id="@+id/select_three_wheel_first"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                ripple:selectionDivider="@drawable/divider_dark_gradient_horizontal"
+                ripple:selectionDividerActiveAlpha="100"
+                ripple:selectionDividerDimmedAlpha="255"
+                ripple:selectionDividerHeight="1px"
+                ripple:visibleItems="4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <com.ypyg.shopmanager.view.wheel.WheelVerticalView
+                android:id="@+id/select_three_wheel_second"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                ripple:selectionDivider="@drawable/divider_dark_gradient_horizontal"
+                ripple:selectionDividerActiveAlpha="100"
+                ripple:selectionDividerDimmedAlpha="255"
+                ripple:selectionDividerHeight="1px"
+                ripple:visibleItems="4" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

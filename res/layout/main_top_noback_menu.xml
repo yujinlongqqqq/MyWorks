@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/style_title" >
+
+        <TextView
+            android:id="@+id/main_top_title"
+            style="@style/style_title_toptext" />
+
+        <ImageView
+            android:id="@+id/more_menu"
+            style="@style/style_title_right_btn"
+            android:onClick="more" />
+    </RelativeLayout>
+
+</LinearLayout>
