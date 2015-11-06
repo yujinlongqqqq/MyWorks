@@ -36,6 +36,7 @@
     <string name="edittitle">商品编辑</string>
     <string name="goodname">商品标题</string>
     <string name="goodweight">商品重量</string>
+    <string name="goodDescription">商品描述</string>
     <string name="goodmilliliter">毫升</string>
     <string name="goodprice">商品价格</string>
     <string name="basissales">基础销量</string>

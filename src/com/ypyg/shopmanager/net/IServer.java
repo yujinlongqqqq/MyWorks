@@ -20,6 +20,8 @@ public interface IServer {
 	public static final String OfflineGood_URL = "/good/goodsoffline";
 	/**商品详情**/
 	public static final String GOODDETAIL_URL = "/good/gooddetail";
+	/**商品新增**/
+	public static final String GOOD_ADD_URL = "/good/goodadd";
 	/**商品状态修改**/
 	public static final String GOODDSTATE_URL = "/good/goodstatus";
 	/**商品状态修改**/

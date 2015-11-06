@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.LruCache;
 
+import com.ypyg.shopmanager.bean.infobean.GoodinfoBean;
 import com.ypyg.shopmanager.cache.ImageCache;
 import com.ypyg.shopmanager.event.BaseStatusEvent;
 import com.ypyg.shopmanager.event.BusProvider;
@@ -22,6 +23,7 @@ import com.ypyg.shopmanager.event.DataVisitorEvent;
 import com.ypyg.shopmanager.event.DeleteOrderEvent;
 import com.ypyg.shopmanager.event.ExitLoginEvent;
 import com.ypyg.shopmanager.event.GetValidateEvent;
+import com.ypyg.shopmanager.event.GoodAddEvent;
 import com.ypyg.shopmanager.event.GoodChooseEvent;
 import com.ypyg.shopmanager.event.GoodDetailEvent;
 import com.ypyg.shopmanager.event.GoodOfflineListEvent;
@@ -66,6 +68,7 @@ import com.ypyg.shopmanager.req.DataVisitorReq;
 import com.ypyg.shopmanager.req.DeleteOrderReq;
 import com.ypyg.shopmanager.req.ExitLoginReq;
 import com.ypyg.shopmanager.req.GetValidateReq;
+import com.ypyg.shopmanager.req.GoodAddReq;
 import com.ypyg.shopmanager.req.GoodChooseReq;
 import com.ypyg.shopmanager.req.GoodDetailReq;
 import com.ypyg.shopmanager.req.GoodOfflineListReq;
@@ -94,6 +97,7 @@ import com.ypyg.shopmanager.resp.DataVisitorResp;
 import com.ypyg.shopmanager.resp.DeleteOrderResp;
 import com.ypyg.shopmanager.resp.ExitLoginResp;
 import com.ypyg.shopmanager.resp.GetValidateResp;
+import com.ypyg.shopmanager.resp.GoodAddResp;
 import com.ypyg.shopmanager.resp.GoodChooseResp;
 import com.ypyg.shopmanager.resp.GoodDetailResp;
 import com.ypyg.shopmanager.resp.GoodOfflineListResp;
@@ -258,11 +262,11 @@ public class DataService implements IRespCode {
 		final ExitLoginEvent aEvent = new ExitLoginEvent();
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
-	
+
 	/**
 	 * 获取商品分类
 	 */
-	public void getGoodSorts(Integer uid){
+	public void getGoodSorts(Integer uid) {
 		final GoodSortsReq aReq = new GoodSortsReq(uid);
 		final GoodSortsResp aResp = new GoodSortsResp();
 		final GoodSortsEvent aEvent = new GoodSortsEvent();
@@ -287,6 +291,7 @@ public class DataService implements IRespCode {
 
 	/**
 	 * 上架商品列表
+	 * 
 	 * @param catid
 	 * @param offset
 	 * @param count
@@ -300,6 +305,7 @@ public class DataService implements IRespCode {
 
 	/**
 	 * 下架商品列表
+	 * 
 	 * @param catid
 	 * @param offset
 	 * @param count
@@ -313,6 +319,7 @@ public class DataService implements IRespCode {
 
 	/**
 	 * 商品明细
+	 * 
 	 * @param id
 	 */
 	public void GoodDetail(String id) {
@@ -330,13 +337,17 @@ public class DataService implements IRespCode {
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
 
-	// 商品增加
-	// public void GoodAdd(String id) {
-	// final GoodUpdateReq aReq = new GoodUpdateReq(id);
-	// final GoodUpdateResp aResp = new GoodUpdateResp();
-	// final GoodUpdateEvent aEvent = new GoodUpdateEvent();
-	// AsyncPostCommand(aReq, aResp, aEvent);
-	// }
+	/**
+	 * 商品增加（一键上架）
+	 * 
+	 * @param id
+	 */
+	public void GoodAdd(int id,GoodinfoBean infobean) {
+		final GoodAddReq aReq = new GoodAddReq(id,infobean);
+		final GoodAddResp aResp = new GoodAddResp();
+		final GoodAddEvent aEvent = new GoodAddEvent();
+		AsyncPostCommand(aReq, aResp, aEvent);
+	}
 
 	// 单个商品上下架
 	public void GoodStatus(Long id, String isonline, int position, String tag) {
@@ -440,7 +451,7 @@ public class DataService implements IRespCode {
 		final DataVisitorEvent aEvent = new DataVisitorEvent();
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
-	
+
 	// 订单数据
 	public void DataOrderCount() {
 		final DataOrderCountReq aReq = new DataOrderCountReq();
@@ -451,6 +462,7 @@ public class DataService implements IRespCode {
 
 	/**
 	 * 查询订单列表
+	 * 
 	 * @param catid
 	 * @param offset
 	 * @param count
@@ -462,13 +474,14 @@ public class DataService implements IRespCode {
 		aEvent.setCatid(catid);
 		AsyncPostCommand(aReq, aResp, aEvent);
 	}
-	
+
 	/**
 	 * 删除订单（单个、多个）
+	 * 
 	 * @param catid
 	 * @param orderid
 	 */
-	public void DeleteOrder(String catid, String orderid,Object item) {
+	public void DeleteOrder(String catid, String orderid, Object item) {
 		final DeleteOrderReq aReq = new DeleteOrderReq(catid, orderid);
 		final DeleteOrderResp aResp = new DeleteOrderResp();
 		final DeleteOrderEvent aEvent = new DeleteOrderEvent();
@@ -535,6 +548,7 @@ public class DataService implements IRespCode {
 
 	/**
 	 * 图片下载
+	 * 
 	 * @param mMemoryCache
 	 * @param imageUrl
 	 * @param mDiskLruCache

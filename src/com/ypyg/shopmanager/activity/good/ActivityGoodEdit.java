@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnShowListener;
@@ -27,12 +26,15 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 import com.ypyg.shopmanager.R;
 import com.ypyg.shopmanager.activity.BaseActivity;
 import com.ypyg.shopmanager.bean.GoodParentsSortBean;
 import com.ypyg.shopmanager.bean.GoodSortBean;
+import com.ypyg.shopmanager.bean.infobean.GoodinfoBean;
 import com.ypyg.shopmanager.cache.ImageCache;
 import com.ypyg.shopmanager.common.AppUtil;
 import com.ypyg.shopmanager.common.Bimp;
@@ -41,6 +43,7 @@ import com.ypyg.shopmanager.common.CropSaveImage;
 import com.ypyg.shopmanager.common.DataCener;
 import com.ypyg.shopmanager.common.ImageCacheManager;
 import com.ypyg.shopmanager.common.util.FileUtils;
+import com.ypyg.shopmanager.event.GoodAddEvent;
 import com.ypyg.shopmanager.event.GoodDetailEvent;
 import com.ypyg.shopmanager.event.ImageForSdkTenEvent;
 import com.ypyg.shopmanager.event.ImageLoadFinishEvent;
@@ -71,7 +74,14 @@ public class ActivityGoodEdit extends BaseActivity {
 
 	private ImageView upload_imageview;
 
-	private EditText mAutoCompleteTextView, good_weight;
+	private EditText good_title, good_class, good_price, good_salesvolume, good_description, good_inventory, good_code, good_weight;
+	private RadioGroup count_radiogroup;
+	/** 商品小图 **/
+	private String smallhead_url = "";
+	/** 库存计数，1 付款减库存 2 拍下减库存 **/
+	private int inventory_count;
+	/** 要提交的数据 **/
+	private GoodinfoBean infobean;
 
 	private SortSelectPopupWindow mDoubleSelectPopupWindow = null;
 	private List<GoodParentsSortBean> mGoodSorts;// 网络的商品分类
@@ -106,9 +116,9 @@ public class ActivityGoodEdit extends BaseActivity {
 
 		@Override
 		public void submit(String value1, String value2, Integer position1, Integer position2) {
-			mPosition1 = position1;
-			mPosition2 = position2;
-			mAutoCompleteTextView.setText(value1 + ";" + value2);
+			mPosition1 =mGoodSorts.get(position1).getId() ;
+			mPosition2 = mGoodSorts.get(position1).getData().get(position2).getId();
+			good_class.setText(value1 + "；" + value2);
 		}
 
 	};
@@ -116,13 +126,26 @@ public class ActivityGoodEdit extends BaseActivity {
 	/**
 	 * 初始化共用控件
 	 */
-	@SuppressLint("NewApi")
 	private void initCommenView() {
 
 		top_condition = findViewById(R.id.top_condition);
-		good_weight = (EditText) findViewById(R.id.good_weight);
-		mAutoCompleteTextView = (EditText) findViewById(R.id.autotext);
-		
+		good_description = (EditText) findViewById(R.id.good_description);
+		good_class = (EditText) findViewById(R.id.good_class);
+		good_title = (EditText) findViewById(R.id.good_title);
+		good_price = (EditText) findViewById(R.id.good_price);
+		good_salesvolume = (EditText) findViewById(R.id.good_salesvolume);
+		good_inventory = (EditText) findViewById(R.id.good_inventory);
+		good_code = (EditText) findViewById(R.id.good_code);
+		count_radiogroup = (RadioGroup) findViewById(R.id.count_radiogroup);
+		witchChecked(count_radiogroup);
+		count_radiogroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				witchChecked(group);
+			}
+		});
+
 		initPopWin();
 
 		upload_imageview = (ImageView) findViewById(R.id.upload_imageview);
@@ -160,9 +183,24 @@ public class ActivityGoodEdit extends BaseActivity {
 	}
 
 	/**
+	 * 判断哪个选中
+	 */
+	private void witchChecked(RadioGroup radio) {
+		switch (radio.getCheckedRadioButtonId()) {
+		case R.id.counttrue:
+			inventory_count = 1;
+			break;
+		case R.id.countfalse:
+			inventory_count = 2;
+			break;
+		}
+	}
+
+	/**
 	 * 初始化筛选弹出窗口
 	 */
 	private void initPopWin() {
+		mGoodSorts=mDataCener.mGoodSorts;
 		// 判断获取的商品分类
 		if (mGoodSorts != null && mGoodSorts.size() > 0) {
 			firstMenu1 = new String[mGoodSorts.size()];
@@ -178,7 +216,7 @@ public class ActivityGoodEdit extends BaseActivity {
 
 			mDoubleSelectPopupWindow = new SortSelectPopupWindow(mContext, firstMenu1, secondMenu2);
 			mDoubleSelectPopupWindow.setListener(mDoubleSelectSubmit);
-			mAutoCompleteTextView.setOnClickListener(new OnClickListener() {
+			good_class.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
@@ -188,7 +226,7 @@ public class ActivityGoodEdit extends BaseActivity {
 				}
 			});
 		} else {
-			mAutoCompleteTextView.setVisibility(View.GONE);
+			good_class.setVisibility(View.GONE);
 		}
 	}
 
@@ -302,7 +340,8 @@ public class ActivityGoodEdit extends BaseActivity {
 	protected void onEventMainThread(ImageUploadInfoEvent event) {
 		loadingView.dismiss();
 		if (event.getCode() == IRespCode.SUCCESS) {
-			mDataCener.showToast(mContext, "图片上传成功地址：" + "http://wxmall.wuyuejin.net/data/attachment/" + event.getUrl());
+			smallhead_url =event.getUrl();
+			mDataCener.showToast(mContext, "图片上传成功!");
 			return;
 		}
 		mDataCener.showToast(mContext, "图片上传失败！");
@@ -356,6 +395,14 @@ public class ActivityGoodEdit extends BaseActivity {
 	private void initView2() {
 		// TODO 初始化控件2
 
+	}
+
+	/**
+	 * 提交商品
+	 */
+	private void req() {
+		if (infobean != null)
+			mDataService.GoodAdd(mDataCener.mBasicUserInfoBean.getId(), infobean);
 	}
 
 	private void req2() {
@@ -455,6 +502,42 @@ public class ActivityGoodEdit extends BaseActivity {
 			if (null != imageView)
 				imageView.setImageBitmap(bitmap);
 		}
+	}
+
+	/**
+	 * 保存按钮
+	 * 
+	 * @param v
+	 */
+	public void toSubmit(View v) {
+		// 非空验证
+		String title = good_title.getText().toString().trim();
+		String description = good_description.getText().toString().trim();
+		String price = good_price.getText().toString().trim();
+		String salesvolume = good_salesvolume.getText().toString().trim();
+		String inventory = good_inventory.getText().toString().trim();
+		String goodcode = good_code.getText().toString().trim();
+		String goodclass = good_class.getText().toString().trim();
+
+		// 组装数据，去请求接口
+		infobean = new GoodinfoBean(title, description, price, salesvolume, smallhead_url, inventory, goodcode, mPosition1 + ";" + mPosition2, inventory_count);
+		req();
+
+	}
+
+	/**
+	 * 商品提交响应
+	 * 
+	 * @param event
+	 */
+	protected void onEventMainThread(GoodAddEvent event) {
+		if (null == event || IRespCode.SUCCESS != event.getCode()) {
+			dialog("商品提交失败！");
+			return;
+		}
+
+		mDataCener.showToast(mContext, "商品提交成功！");
+		finish();
 	}
 
 }

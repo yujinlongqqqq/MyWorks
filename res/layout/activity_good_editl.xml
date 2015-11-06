@@ -11,14 +11,13 @@
             android:onClick="back" />
 
         <TextView
-            android:id="@+id/address_title_toptext"
             style="@style/style_title_toptext"
             android:text="@string/edittitle" />
 
         <TextView
-            android:id="@+id/address_save"
             style="@style/style_title_right_btn"
             android:clickable="true"
+            android:onClick="toSubmit"
             android:text="@string/savebutton" />
     </RelativeLayout>
 
@@ -42,31 +41,21 @@
                     android:text="@string/goodname" />
 
                 <EditText
-                    android:id="@+id/good_name"
+                    android:id="@+id/good_title"
                     style="@style/style_edit_item3" />
             </LinearLayout>
 
-            <LinearLayout style="@style/style_edit_item1" >
+            <LinearLayout style="@style/style_edit_item1">
 
                 <TextView
                     style="@style/style_edit_item2"
                     android:text="商品分类" />
 
                 <EditText
-                    android:id="@+id/autotext"
+                    android:id="@+id/good_class"
                     style="@style/style_edit_item3"
+                    android:editable="false"
                     android:focusable="false" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/style_edit_item1" >
-
-                <TextView
-                    style="@style/style_edit_item2"
-                    android:text="@string/goodweight" />
-
-                <EditText
-                    android:id="@+id/good_weight"
-                    style="@style/style_edit_item3" />
             </LinearLayout>
 
             <LinearLayout style="@style/style_edit_item1" >
@@ -77,7 +66,8 @@
 
                 <EditText
                     android:id="@+id/good_price"
-                    style="@style/style_edit_item3" />
+                    style="@style/style_edit_item3"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout style="@style/style_edit_item1" >
@@ -87,8 +77,9 @@
                     android:text="@string/basissales" />
 
                 <EditText
-                    android:id="@+id/good_basissales"
-                    style="@style/style_edit_item3" />
+                    android:id="@+id/good_salesvolume"
+                    style="@style/style_edit_item3"
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,7 +117,8 @@
 
                 <EditText
                     android:id="@+id/good_inventory"
-                    style="@style/style_edit_item3" />
+                    style="@style/style_edit_item3"
+                    android:inputType="number" />
             </LinearLayout>
 
             <View style="@style/style_dividing_line" />
@@ -140,18 +132,7 @@
                     android:text="@string/goodnumber" />
 
                 <EditText
-                    android:id="@+id/good_number"
-                    style="@style/style_edit_item3" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/style_edit_item1" >
-
-                <TextView
-                    style="@style/style_edit_item2"
-                    android:text="@string/goodcategories" />
-
-                <EditText
-                    android:id="@+id/good_categories"
+                    android:id="@+id/good_code"
                     style="@style/style_edit_item3" />
             </LinearLayout>
 
@@ -162,6 +143,7 @@
                     android:text="@string/goodcount" />
 
                 <RadioGroup
+                    android:id="@+id/count_radiogroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -171,62 +153,36 @@
                         android:id="@+id/counttrue"
                         style="@style/style_radio_button"
                         android:checked="true"
-                        android:text="@string/goodcounttrue" />
+                        android:text="@string/goodcountfalse" />
 
                     <RadioButton
                         android:id="@+id/countfalse"
                         style="@style/style_radio_button"
                         android:layout_marginLeft="10dp"
-                        android:text="@string/goodcountfalse" />
+                        android:text="@string/goodcounttrue" />
                 </RadioGroup>
             </LinearLayout>
 
-            <LinearLayout style="@style/style_edit_item1" >
+            <LinearLayout
+                style="@style/style_edit_item1"
+                android:layout_height="wrap_content" >
 
                 <TextView
                     style="@style/style_edit_item2"
-                    android:text="@string/goodissale" />
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:paddingTop="15dp"
+                    android:text="@string/goodDescription" />
 
-                <RadioGroup
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/good_description"
+                    style="@style/style_edit_item3"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/child_male"
-                        style="@style/style_radio_button"
-                        android:checked="true"
-                        android:text="@string/saletrue" />
-
-                    <RadioButton
-                        android:id="@+id/child_female"
-                        style="@style/style_radio_button"
-                        android:layout_marginLeft="20dp"
-                        android:text="@string/salefalse" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <LinearLayout style="@style/style_edit_item1" >
-
-                <TextView
-                    style="@style/style_edit_item2"
-                    android:text="@string/timeup" />
-
-                <EditText
-                    android:id="@+id/good_timeup"
-                    style="@style/style_edit_item3" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/style_edit_item1" >
-
-                <TextView
-                    style="@style/style_edit_item2"
-                    android:text="@string/timedown" />
-
-                <EditText
-                    android:id="@+id/good_timedown"
-                    style="@style/style_edit_item3" />
+                    android:gravity="top"
+                    android:hint="请填写..."
+                    android:inputType="textMultiLine"
+                    android:minHeight="100dp"
+                    android:paddingTop="10dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
